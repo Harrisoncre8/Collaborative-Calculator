@@ -10,7 +10,58 @@
   <title>Collaborative Calculator</title>
 </head>
 <body>
-  <h1>Hello</h1>
+  <div class="container">
+    <!-- input for name entry -->
+    <div class="username">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" />
+    </div>
+    <!-- calculation display here -->
+    <div id="output">
+      <div id="current-value"></div>
+      <div id="current-math">
+        <div id="calc-label">Calculation: </div>
+        <div id="calc-content"></div>
+      </div>
+    </div>
+    <!-- calculator buttons -->
+    <div class="row">
+      <div class="btn-empty"></div>
+      <button type="button" class="btn" id="negative" name="negative">&plusmn;</button>
+      <button type="button" class="btn" id="all-clear" name="all-clear">AC</button>
+      <button type="button" class="btn" id="clear-display" name="clear-display">C</button>
+      <button type="button" class="btn operator" name="div">&divide;</button>
+    </div>
+    <div class="row">
+      <button type="button" class="btn digit" name="7">7</button>
+      <button type="button" class="btn digit" name="8">8</button>
+      <button type="button" class="btn digit" name="9">9</button>
+      <button type="button" class="btn operator" name="times">&times;</button>
+    </div>
+    <div class="row">
+      <button type="button" class="btn digit" name="4">4</button>
+      <button type="button" class="btn digit" name="5">5</button>
+      <button type="button" class="btn digit" name="6">6</button>
+      <button type="button" class="btn operator" name="minus">-</button>
+    </div>
+    <div class="row">
+      <button type="button" class="btn digit" name="1">1</button>
+      <button type="button" class="btn digit" name="2">2</button>
+      <button type="button" class="btn digit" name="3">3</button>
+      <button type="button" class="btn operator" name="plus">+</button>
+    </div>
+    <div class="row">
+      <button type="button" class="btn digit" name="0">0</button>
+      <button type="button" class="btn" id="decimal" name="decimal">.</button>
+      <button type="button" class="btn" id="equal" name="equal">=</button>
+    </div>
+    <!-- calculation logs display here -->
+    <div class="calc-footer">
+      <h3>Most recent calculations:</h3>
+      <ol class="calc-log" id="calc-log"></ol>
+    </div>
+  </div>
+
   <script src="client.js" charset="utf-8"></script>
 </body>
 </html>
