@@ -23,6 +23,7 @@ io.on('connection', socket => {
       // to all users on client side as array using spread operator
       calcLog = [calculation, ...calcLog.slice(0, 9)];
       io.emit('calcLog', calcLog);
+      // clear array for next calculation
       calcLog = [];
     })
 });

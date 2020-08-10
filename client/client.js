@@ -139,7 +139,7 @@ class Calculator {
   }
 }
 
-// create calculator object using calculator class constructor to help with calculating numbers
+// create calculator object using calculator class constructor to help compute numbers
 const calculator = new Calculator(previousValueTextElement, currentValueTextElement);
 
 // handle number button clicks and update display
@@ -183,5 +183,4 @@ socket.on('calcLog', calcLog => {
     logItem.innerHTML = `${name}: ${calculation}`;
     logDisplay.insertAdjacentElement('beforeend', logItem);
   })
-  console.log(calcLog);
 })
