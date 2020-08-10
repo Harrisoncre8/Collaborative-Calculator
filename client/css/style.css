@@ -22,6 +22,7 @@ body {
 .username {
   text-align: center;
   margin-top: 35px;
+  margin-bottom: -60px;
   padding: 0px;
 }
 
@@ -78,4 +79,17 @@ input {
   font-family: Gotham Rounded, sans-serif;
 }
 
+.calculator-footer {
+  margin-top: -60px;
+}
 
+ol {
+  list-style-type: disc;
+  font-size: 2em;
+  list-style-position: inside;
+  text-align: center;
+}
+
+li {
+  padding: .5em;
+}
