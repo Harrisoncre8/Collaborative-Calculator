@@ -9,3 +9,30 @@ body {
   margin: 0;
   background: linear-gradient(to right, rgb(228, 222, 216), rgb(83, 99, 124));
 }
+
+.calculator-grid {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+}
+
+.username {
+  text-align: center;
+  bottom: 100vh;
+}
+
+label {
+  display: inline-block;
+  font-size: 1rem;
+}
+
+input {
+  display: inline-block;
+  height: 40px;
+  border: 1px solid black;
+  padding: 0 10px;
+  font-size: 1rem;
+}
