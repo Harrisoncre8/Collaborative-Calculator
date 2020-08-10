@@ -7,6 +7,8 @@ const allClearButton = document.querySelector('[data-all-clear]');
 const previousValueTextElement = document.querySelector('[data-previous-value]');
 const currentValueTextElement = document.querySelector('[data-current-value]');
 const usernameTextElement = document.getElementById('username');
+let sharedComputation = [];
+const socket = io();
 
 class Calculator {
   constructor(previousValueTextElement, currentValueTextElement){
@@ -83,9 +85,17 @@ class Calculator {
       default:
         return;
     }
+
+    sharedComputation.push(this.previousValue, this.operator, this.currentValue, computation);
+    socket.emit('calculation', {
+      calculation: sharedComputation[0] + sharedComputation[1] + sharedComputation[2] + ' = ' + sharedComputation[3],
+      name: usernameTextElement.value || 'Guest User'
+    });    
+    
     this.currentValue = computation;
     this.operator = undefined;
     this.previousValue = '';
+    sharedComputation = [];    
   }
 
   // helper function to display numbers with commas
