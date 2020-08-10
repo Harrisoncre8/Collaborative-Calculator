@@ -31,7 +31,12 @@ class Calculator {
 
   // update display with current calculation
   useNumber(number){
-    this.currentOperator = number;
+    // checks for decimal point and only allow 1 decimal point
+    if(number === '.' && this.currentOperator.includes('.')){
+      return
+    }
+    // allows for long string of numbers as calculator input
+    this.currentOperator = this.currentOperator.toString() + number.toString();
   }
 
   // determine which operator to use
