@@ -22,7 +22,7 @@ body {
 .username {
   text-align: center;
   margin-top: 35px;
-  margin-bottom: -60px;
+  margin-bottom: -30px;
   padding: 0px;
 }
 
@@ -83,11 +83,16 @@ input {
   margin-top: -60px;
 }
 
-ol {
+ol, h3 {
   list-style-type: disc;
   font-size: 2em;
   list-style-position: inside;
   text-align: center;
+}
+
+h3 {
+  margin-top: 25px;
+  margin-bottom: .5em;
 }
 
 li {
