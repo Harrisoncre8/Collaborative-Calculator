@@ -1,6 +1,7 @@
 # The Collaborative Calculator
 
 This is Harrison Nguyen's solution to sezzle's coding challenge.
+<br />
 Project deployed at https://the-collaborative-calculator.herokuapp.com/
 
 Duration: 2-5 hours
