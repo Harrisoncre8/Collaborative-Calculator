@@ -178,9 +178,13 @@ deleteButton.addEventListener('click', button => {
 
 // handle socket response from server
 socket.on('calcLog', calcLog => {
+  // clear log display in order for alternative to session to work correctly
+  logDisplay.innerHTML = '';
+  // for each element in array, create a list item and
+  // display to logDisplay
   calcLog.forEach(({calculation, name}) => {
     const logItem = document.createElement('li');
     logItem.innerHTML = `${name}: ${calculation}`;
     logDisplay.insertAdjacentElement('beforeend', logItem);
   })
-})
+});
