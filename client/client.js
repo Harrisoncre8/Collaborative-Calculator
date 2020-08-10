@@ -47,7 +47,7 @@ class Calculator {
     }
     // if currentValue and previousValue is not empty, 
     // compute and display new value and operator
-    if(this.previousValue != ''){
+    if(this.previousValue !== ''){
       this.calculation();
     }
     // once an operator is clicked, value will be cleared and displayed in new position
@@ -60,14 +60,14 @@ class Calculator {
   calculation(){
     let computation = '';
     // convert values to integer
-    const previousInt = parseFloat(this.previousValue);
-    const currentInt = parseFloat(this.currentValue);
+    let previousInt = parseFloat(this.previousValue);
+    let currentInt = parseFloat(this.currentValue);
     // check for input validation
     if(isNaN(previousInt) || isNaN(currentInt)){
       return
     }
     // calculation using previous and current values
-    switch (this.operation) {
+    switch (this.operator) {
       case '+':
         computation = previousInt + currentInt
         break;
@@ -91,7 +91,7 @@ class Calculator {
   // update output values
   updateDisplay(){
     this.currentValueTextElement.innerText = this.currentValue;
-    this.previousValueTextElement = this.previousValue;
+    this.previousValueTextElement.innerText = this.previousValue;
   }
 }
 
@@ -106,7 +106,7 @@ numberButtons.forEach(button => {
   })
 });
 
-// handle operator button clicks and update display
+// handle operator button clicks
 operatorButtons.forEach(button => {
   button.addEventListener('click', () => {
     calculator.useOperator(button.innerText);
@@ -114,7 +114,18 @@ operatorButtons.forEach(button => {
   })
 });
 
+// handle equal button click
 equalsButton.addEventListener('click', button => {
   calculator.calculation();
   calculator.updateDisplay();
-})
+});
+
+// handle clear click and clears display
+allClearButton.addEventListener('click', button => {
+  calculator.clear();
+  calculator.updateDisplay();
+});
+
+
+
+
