@@ -7,6 +7,7 @@ const allClearButton = document.querySelector('[data-all-clear]');
 const previousValueTextElement = document.querySelector('[data-previous-value]');
 const currentValueTextElement = document.querySelector('[data-current-value]');
 const usernameTextElement = document.getElementById('username');
+const logDisplay = document.getElementById('log-display')
 let sharedComputation = [];
 const socket = io();
 
@@ -86,12 +87,15 @@ class Calculator {
         return;
     }
 
+    // store calculation in array
     sharedComputation.push(this.previousValue, this.operator, this.currentValue, computation);
+    // emit array to server using socket
     socket.emit('calculation', {
       calculation: sharedComputation[0] + sharedComputation[1] + sharedComputation[2] + ' = ' + sharedComputation[3],
       name: usernameTextElement.value || 'Guest User'
     });    
     
+    // reset fields after calculaiton and emit
     this.currentValue = computation;
     this.operator = undefined;
     this.previousValue = '';
@@ -171,3 +175,13 @@ deleteButton.addEventListener('click', button => {
   calculator.delete();
   calculator.updateDisplay();
 });
+
+// handle socket response from server
+socket.on('calcLog', calcLog => {
+  calcLog.forEach(({calculation, name}) => {
+    const logItem = document.createElement('li');
+    logItem.innerHTML = `${name}: ${calculation}`;
+    logDisplay.insertAdjacentElement('beforeend', logItem);
+  })
+  console.log(calcLog);
+})
