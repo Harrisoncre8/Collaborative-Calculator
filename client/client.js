@@ -19,8 +19,8 @@ class Calculator {
   // function that handles clearing different variables
   // clears all inputs when calculator is created
   clear(){
-    this.currentOperator = '';
-    this.previousOperator = '';
+    this.currentValue = '';
+    this.previousValue = '';
     this.operation = undefined;
   }
 
@@ -32,26 +32,66 @@ class Calculator {
   // update display with current calculation
   useNumber(number){
     // checks for decimal point and only allow 1 decimal point
-    if(number === '.' && this.currentOperator.includes('.')){
+    if(number === '.' && this.currentValue.includes('.')){
       return
     }
     // allows for long string of numbers as calculator input
-    this.currentOperator = this.currentOperator.toString() + number.toString();
+    this.currentValue = this.currentValue.toString() + number.toString();
   }
 
   // determine which operator to use
   useOperator(operator){
-
+    // check for exisitng input values
+    if(this.currentValue === ''){
+      return
+    }
+    // if currentValue and previousValue is not empty, 
+    // compute and display new value and operator
+    if(this.previousValue != ''){
+      this.calculation();
+    }
+    // once an operator is clicked, value will be cleared and displayed in new position
+    this.operator = operator;
+    this.previousValue = this.currentValue;
+    this.currentValue = '';
   }
 
   // compute number and display on calculator
   calculation(){
-
+    let computation = '';
+    // convert values to integer
+    const previousInt = parseFloat(this.previousValue);
+    const currentInt = parseFloat(this.currentValue);
+    // check for input validation
+    if(isNaN(previousInt) || isNaN(currentInt)){
+      return
+    }
+    // calculation using previous and current values
+    switch (this.operation) {
+      case '+':
+        computation = previousInt + currentInt
+        break;
+      case '-':
+        computation = previousInt - currentInt
+        break;
+      case '*':
+        computation = previousInt * currentInt
+        break;
+      case '÷':
+        computation = previousInt / currentInt
+        break;
+      default:
+        break;
+    }
+    this.currentValue = computation;
+    this.operation = undefined;
+    this.previousValue = '';
   }
 
   // update output values
   updateDisplay(){
-    this.currentValueTextElement.innerText = this.currentOperator;
+    this.currentValueTextElement.innerText = this.currentValue;
+    this.previousValueTextElement = this.previousValue;
   }
 }
 
@@ -64,4 +104,17 @@ numberButtons.forEach(button => {
     calculator.useNumber(button.innerText);
     calculator.updateDisplay();
   })
+});
+
+// handle operator button clicks and update display
+operatorButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    calculator.useOperator(button.innerText);
+    calculator.updateDisplay();
+  })
+});
+
+equalsButton.addEventListener('click', button => {
+  calculator.calculation();
+  calculator.updateDisplay();
 })
