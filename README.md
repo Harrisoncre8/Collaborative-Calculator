@@ -6,7 +6,7 @@ Project deployed at https://the-collaborative-calculator.herokuapp.com/
 
 Duration: 2-5 hours
 
-This project was built within a few hours time - culminating with a community calculator built in vanilla JavaScript and styled primarily with CSS. The calculatoris structured as an object with global variables and a few event listeners. You can find my code within the client and server folder. I started by flowcharting the base features that were required within the project and utilized online resources like w3schools, developer.mozilla, and stack overflow to find built-in functions, methods, and libraries (like socket.io). Feel free to contact me if you have any questions about my code.  
+This project was built within a few hours time - culminating with a community calculator built in vanilla JavaScript and styled primarily with CSS. The calculator is structured as an object with global variables and a few event listeners. You can find my code within the client and server folder. I started by flowcharting the base features that were required within the project and utilized online resources like w3schools, developer.mozilla, and stack overflow to find built-in functions, methods, and libraries (like socket.io). Feel free to contact me if you have any questions about my code.  
 
 ## Scrennshots
 
